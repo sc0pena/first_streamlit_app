@@ -42,8 +42,10 @@ try:
   if not fruit_choice: 
     streamlit.error("Please select a fruit to get information.")
   else:
+    #if something actually entered then grab customer input and ass to the function that returns normalized response
     back_from_function = get_fruityvice_data(fruit_choice)
     # write your own comment - what does this do?
+    #return output from function into a dataframe format for cleanliness
     streamlit.dataframe(back_from_function)
  
 except URLError as e:
@@ -65,6 +67,11 @@ my_cur.execute("SELECT * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
+
+
+
+
+
 
 #allow the end user to add a fruit to the list
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','')
